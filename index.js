@@ -1,3 +1,5 @@
+// index.js
+
 // 1. Global variable customerName
 var customerName = 'bob';
 
@@ -8,7 +10,8 @@ function upperCaseCustomerName() {
 
 // 3. Function that sets bestCustomer in global scope
 function setBestCustomer() {
-  bestCustomer = 'not bob'; // declared in global scope (without var/let/const)
+  // Don't use var/let/const to create a global variable
+  bestCustomer = 'not bob';
 }
 
 // 4. Function that overwrites bestCustomer
@@ -22,4 +25,16 @@ const leastFavoriteCustomer = 'initial customer';
 // 6. Function that tries to reassign leastFavoriteCustomer
 function changeLeastFavoriteCustomer() {
   leastFavoriteCustomer = 'new customer'; // This will throw an error
+}
+
+// Export everything so tests can access them
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    customerName,
+    upperCaseCustomerName,
+    setBestCustomer,
+    overwriteBestCustomer,
+    leastFavoriteCustomer,
+    changeLeastFavoriteCustomer
+  };
 }
